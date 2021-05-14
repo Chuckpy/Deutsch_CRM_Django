@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Novidades
+{% endblock title %}
+
+{% block content %}
+
+{% for obj in object_list %}
+<div class="col-12">
+<div class="row">
+    <div class="col-9">
+        <div class="">
+        <h6>{{ obj.title }}</h6>
+        <h6>{{ obj.author }}</h6>
+        <h6>{{ obj.body|safe }}</h6>
+        <h6>{{ obj.image.url }}</h6>
+        <h6>{{ obj.created }}</h6>
+        </div>
+    </div>
+</div>
+</div> <br> <hr>
+
+    
+{% endfor %}
+
+{% endblock content %}

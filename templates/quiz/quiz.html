@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block script %}
+    <script src="{% static 'js/quiz.js' %}" defer></script>
+{% endblock script %}
+{% block title %}
+{{ obj.nome }}
+{% endblock title %}
+
+{% block content %}
+<div class="col-12">
+<div class="row">
+    <div class="col-9">
+        <div class="container my-3">
+            <h1 class="font-weight-bold">{{ obj.nome }}</h1>
+            <p>Porcentagem necessária para passar : {{ obj.porcentagem_necessaria }} % </p> 
+                <form id="quiz-form" class="mb-3 mt-3">
+                {% csrf_token %}
+                    <div id="quiz-box">{% comment %} jsescreve{% endcomment %}</div> 
+                    <button type="submit" class="btn btn-success mt-3">Salvar</button>
+                </form>
+            <div id='score-box'></div>
+            <div id='result-box'></div>
+        </div>
+    </div>
+    
+    <div class="col-3">    
+            <a href="{% url 'quizes:testes' %}" class="btn btn-danger">Voltar</a> 
+            <div>Tempo restante 
+            <div id="timer-box" ></div>
+            </div>
+    </div>
+</div>
+</div>
+
+
+
+
+{% endblock content %}
